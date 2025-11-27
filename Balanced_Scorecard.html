@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Balanced Scorecard - Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000; /* Fondo negro para modo presentación */
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Ocultar barras de scroll */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Slide Container - Modified for Fullscreen Presentation */
+.slide-container {
+  align-items: center;
+  background-color: #0f172a; /* Slate 900 */
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: none; /* Oculto por defecto */
+  flex-direction: column;
+  height: 720px; /* Tamaño fijo para consistencia */
+  width: 1280px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  color: #f1f5f9; /* Slate 100 */
+}
+
+/* Mostrar solo la diapositiva activa */
+.slide-container.active {
+    display: flex;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Background Design */
+.slide-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 80%, rgba(74, 222, 128, 0.05) 0%, transparent 20%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Controls Hint */
+.controls-hint {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #475569;
+    font-size: 14px;
+    z-index: 100;
+    font-family: sans-serif;
+    pointer-events: none;
+}
+
+/* 2. TYPOGRAPHY */
+.slide-container h1,
+.slide-container h2,
+.slide-container h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.slide-container h1 {
+  font-size: 72px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.slide-container .slide-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #38bdf8; /* Sky 400 */
+  margin-bottom: 40px;
+  width: 100%;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 15px;
+}
+
+.slide-container p,
+.slide-container li,
+.slide-container td,
+.slide-container th {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #cbd5e1; /* Slate 300 */
+}
+
+.slide-container .subtitle {
+  font-size: 28px;
+  font-weight: 300;
+  color: #94a3b8;
+  margin-top: 20px;
+}
+
+/* 3. LAYOUTS */
+
+.slide-container .content-area {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Title Slide */
+.title-layout {
+  text-align: center;
+  z-index: 2;
+}
+.title-layout h1 span {
+  color: #38bdf8;
+}
+
+/* Two Column */
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  height: 100%;
+}
+.two-column ul {
+  list-style: none;
+  padding: 0;
+}
+.two-column li {
+  margin-bottom: 15px;
+  padding-left: 30px;
+  position: relative;
+}
+.two-column li::before {
+  content: '•';
+  color: #4ade80; /* Green 400 */
+  position: absolute;
+  left: 0;
+  font-size: 30px;
+  top: -8px;
+}
+
+/* Image Wrapper */
+.image-wrapper {
+  width: 100%;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  background-color: #1e293b;
+}
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.two-column .image-wrapper img {
+    object-fit: contain;
+}
+
+/* Tiled Content */
+.tiled-content {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  justify-content: center;
+}
+.tile {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 30px;
+  flex: 1;
+  text-align: center;
+}
+.tile .icon {
+  font-size: 40px;
+  color: #4ade80;
+  margin-bottom: 20px;
+}
+.tile h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #38bdf8;
+}
+.tile p {
+  font-size: 16px;
+}
+
+/* Bleed Image Right */
+.slide-container.bleed-image-layout {
+  display: none; /* Mantener oculto hasta active */
+}
+.slide-container.bleed-image-layout.active {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  padding: 0;
+  background-color: #0f172a;
+}
+.bleed-image-layout .content-container {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.bleed-image-layout .image-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.bleed-image-side {
+  width: 100%;
+  height: 100%;
+  max-height: 720px;
+  object-fit: cover;
+  object-position: center;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+/* Quote Layout */
+.quote-layout {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.quote-layout blockquote {
+  font-size: 40px;
+  font-style: italic;
+  font-family: 'Montserrat', serif;
+  color: #ffffff;
+  margin-bottom: 30px;
+  position: relative;
+}
+.quote-layout blockquote::before {
+  content: '"';
+  font-size: 120px;
+  color: #334155;
+  position: absolute;
+  left: -60px;
+  top: -40px;
+  z-index: -1;
+}
+.quote-layout cite {
+  font-size: 24px;
+  color: #4ade80;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Table Layout */
+.table-layout {
+  width: 100%;
+  background-color: #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #334155;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 20px 25px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+th {
+  background-color: #0f172a;
+  color: #38bdf8;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Bullet List */
+.bullet-list-container {
+    background-color: #1e293b;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #334155;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.bullet-list-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.bullet-list-container li {
+    margin-bottom: 20px;
+    padding-left: 50px;
+    position: relative;
+    font-size: 22px;
+}
+.bullet-list-container li i {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: #4ade80;
+    font-size: 24px;
+}
+.bullet-list-container strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Q&A */
+.qa-layout h2 {
+    font-size: 100px;
+    color: #38bdf8;
+    margin-bottom: 20px;
+}
+.qa-layout {
+    text-align: center;
+}
+
+.full-bg-overlay {
+    background-color: rgba(15, 23, 42, 0.85);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title Slide -->
+<div class="slide-container active full-bg-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;">
+    <div class="title-layout full-bg-overlay">
+        <h1>The Balanced <span>Scorecard</span></h1>
+        <p class="subtitle">Translating Strategy into Action</p>
+    </div>
+</div>
+
+<!-- Slide 2: Introduction -->
+<div class="slide-container">
+    <h2 class="slide-title">What is the Balanced Scorecard?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>The Balanced Scorecard (BSC) is a strategic management performance metric used to identify and improve various internal business functions and their resulting external outcomes.</p>
+                <p style="margin-top: 20px;">Developed by <strong>Dr. Robert Kaplan</strong> and <strong>Dr. David Norton</strong> in the early 1990s, it revolutionized how companies measure success by moving beyond financial metrics alone.</p>
+                <ul style="margin-top: 20px;">
+                    <li>Connects everyday work to strategy</li>
+                    <li>Prioritizes projects and products</li>
+                    <li>Measures and monitors progress</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Business executives analyzing strategic data">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: The 4 Perspectives Overview -->
+<div class="slide-container">
+    <h2 class="slide-title">The Four Perspectives</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Financial</h3>
+                <p>To succeed financially, how should we appear to our shareholders?</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-users"></i></div>
+                <h3>Customer</h3>
+                <p>To achieve our vision, how should we appear to our customers?</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-gears"></i></div>
+                <h3>Internal Process</h3>
+                <p>To satisfy our shareholders and customers, at what processes must we excel?</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-seedling"></i></div>
+                <h3>Learning & Growth</h3>
+                <p>To achieve our vision, how will we sustain our ability to change and improve?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Financial Perspective -->
+<div class="slide-container">
+    <h2 class="slide-title">1. Financial Perspective</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>The Traditional View</h3>
+                <p>This perspective focuses on financial performance and the use of financial resources. It asks whether the company's strategy, implementation, and execution are contributing to bottom-line improvement.</p>
+                <br>
+                <ul>
+                    <li><strong>Revenue Growth:</strong> Expanding to new markets or products.</li>
+                    <li><strong>Cost Reduction:</strong> Lowering unit costs.</li>
+                    <li><strong>Asset Utilization:</strong> Efficient use of capital.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Chart showing upward financial growth">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Customer Perspective -->
+<div class="slide-container">
+    <h2 class="slide-title">2. Customer Perspective</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Handshake representing customer satisfaction">
+            </div>
+            <div>
+                <h3>The Customer's View</h3>
+                <p>This perspective identifies the customer and market segments in which the business unit will compete. It aligns organizational measures with customer expectations.</p>
+                <br>
+                <ul>
+                    <li><strong>Customer Satisfaction:</strong> Are clients happy?</li>
+                    <li><strong>Retention:</strong> Do they come back?</li>
+                    <li><strong>Market Share:</strong> Percentage of the market controlled.</li>
+                    <li><strong>Brand Image:</strong> Perception in the market.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Internal Process Perspective -->
+<div class="slide-container bleed-image-layout">
+    <div class="content-container">
+        <h2 class="slide-title" style="border:none;">3. Internal Process Perspective</h2>
+        <div class="content-area">
+            <p>This perspective focuses on the internal processes that are critical to success. It answers the question: <strong>"To satisfy our shareholders and customers, at what business processes must we excel?"</strong></p>
+            <p style="margin-top: 20px;">Managers identify the critical processes at which they must excel to satisfy customer and shareholder objectives.</p>
+            <ul style="margin-top: 20px; color: #cbd5e1; list-style: disc; padding-left: 20px;">
+                <li>Quality optimization (Defect rates).</li>
+                <li>Cycle time reduction.</li>
+                <li>Innovation processes.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="image-container">
+        <img class="bleed-image-side" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Technology and processes">
+    </div>
+</div>
+
+<!-- Slide 7: Learning & Growth Perspective -->
+<div class="slide-container">
+    <h2 class="slide-title">4. Learning & Growth Perspective</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>The Foundation</h3>
+                <p>Also known as "Organizational Capacity," this perspective identifies the intangible assets that are most important for strategy. It is the foundation upon which the other three perspectives are built.</p>
+                <br>
+                <ul>
+                    <li><strong>Human Capital:</strong> Skills, talent, and knowledge.</li>
+                    <li><strong>Information Capital:</strong> Databases, networks, and IT infrastructure.</li>
+                    <li><strong>Organization Capital:</strong> Culture, leadership, and teamwork.</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Team training and development workshop">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Strategy Maps -->
+<div class="slide-container">
+    <h2 class="slide-title">Visualizing Strategy: The Strategy Map</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Diagram showing strategy map connections">
+            </div>
+            <div>
+                <h3>Connecting the Dots</h3>
+                <p>A Strategy Map is a visual representation of the cause-and-effect relationships among the objectives in the four perspectives.</p>
+                <p style="margin-top: 20px;"><strong>The Logic Flow:</strong></p>
+                <p>Improvements in <em>Learning & Growth</em> lead to better <em>Internal Processes</em>, which drive <em>Customer Satisfaction</em>, ultimately resulting in <em>Financial Success</em>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: Key Benefits -->
+<div class="slide-container">
+    <h2 class="slide-title">Key Benefits of the BSC</h2>
+    <div class="content-area">
+        <div class="bullet-list-container">
+            <ul>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Alignment:</strong> Aligns business activities to the vision and strategy of the organization.</li>
+                <li><i class="fa-solid fa-comments"></i> <strong>Communication:</strong> Improves internal and external communications, and monitors organization performance against strategic goals.</li>
+                <li><i class="fa-solid fa-bullseye"></i> <strong>Focus:</strong> Helps prioritize projects and initiatives that truly drive the strategy forward.</li>
+                <li><i class="fa-solid fa-chart-pie"></i> <strong>Holistic View:</strong> Provides managers with a comprehensive picture of business operations, not just financials.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Example KPIs -->
+<div class="slide-container">
+    <h2 class="slide-title">Example Key Performance Indicators (KPIs)</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Perspective</th>
+                        <th>Strategic Objective</th>
+                        <th>Measure / KPI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color: #4ade80; font-weight:600;">Financial</td>
+                        <td>Increase Profitability</td>
+                        <td>Net Profit Margin, ROI</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #38bdf8; font-weight:600;">Customer</td>
+                        <td>Improve Service Quality</td>
+                        <td>Net Promoter Score (NPS), Return Rate</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #f472b6; font-weight:600;">Internal Process</td>
+                        <td>Reduce Waste</td>
+                        <td>Cycle Time, Defect Percentage</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #fbbf24; font-weight:600;">Learning & Growth</td>
+                        <td>Enhance Employee Skills</td>
+                        <td>Training Hours per Employee, Staff Turnover</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Quote -->
+<div class="slide-container">
+    <div class="content-area">
+        <div class="quote-layout">
+            <blockquote>
+                "The Balanced Scorecard provides managers with the instrumentation they need to navigate to future competitive success."
+            </blockquote>
+            <cite>— Robert S. Kaplan & David P. Norton</cite>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Q&A -->
+<div class="slide-container">
+    <div class="qa-layout">
+        <h2>Q&A</h2>
+        <p>Thank you for your attention.</p>
+        <p class="subtitle" style="margin-top: 40px;">Open for questions and discussion.</p>
+    </div>
+</div>
+
+<div class="controls-hint">Use Arrow Keys to Navigate</div>
+
+<script>
+    // Simple Presentation Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.slide-container');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            // Bounds check
+            if (index < 0) index = 0;
+            if (index >= slides.length) index = slides.length - 1;
+
+            currentSlide = index;
+
+            // Update classes
+            slides.forEach((slide, i) => {
+                if (i === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                showSlide(currentSlide - 1);
+            }
+        });
+
+        // Click Navigation
+        document.addEventListener('click', (e) => {
+            // Only advance if clicking on the right side, go back if left side
+            // For simplicity: click always advances
+            showSlide(currentSlide + 1);
+        });
+
+        // Initialize
+        showSlide(0);
+    });
+</script>
+
+</body>
+</html>
