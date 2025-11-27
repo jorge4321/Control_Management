@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incentive Alignment - Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+* { box-sizing: border-box; }
+body {
+  background-color: #000000;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Slide Container */
+.slide-container {
+  align-items: center;
+  background-color: #0f172a; /* Slate 900 */
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+  height: 720px;
+  width: 1280px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  color: #f1f5f9;
+}
+.slide-container.active { display: flex; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+/* Background Design - Emerald & Gold */
+.slide-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: 
+    linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, transparent 40%), /* Emerald */
+    linear-gradient(-45deg, rgba(234, 179, 8, 0.05) 60%, transparent 100%); /* Gold */
+  z-index: 0; pointer-events: none;
+}
+
+/* Typography */
+h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #ffffff; margin: 0; line-height: 1.2; }
+h1 { font-size: 72px; font-weight: 800; text-transform: uppercase; letter-spacing: -1px; }
+.slide-title {
+  font-size: 42px; font-weight: 700; color: #34d399; /* Emerald 400 */
+  margin-bottom: 30px; width: 100%; border-bottom: 2px solid #334155; padding-bottom: 15px;
+}
+p, li { font-size: 18px; line-height: 1.6; color: #cbd5e1; }
+.subtitle { font-size: 28px; font-weight: 300; color: #94a3b8; margin-top: 20px; }
+
+/* Layouts */
+.content-area { display: flex; flex-direction: column; flex-grow: 1; width: 100%; justify-content: center; position: relative; z-index: 1; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; height: 100%; }
+.image-wrapper { width: 100%; height: 350px; border-radius: 12px; overflow: hidden; background: #1e293b; }
+.image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.full-bg-overlay { background-color: rgba(6, 78, 59, 0.9); padding: 40px; border-radius: 12px; text-align: center; }
+
+/* Components */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card { background: #1e293b; padding: 25px; border-radius: 12px; border-top: 4px solid #34d399; }
+.card h3 { font-size: 22px; color: #34d399; margin-bottom: 10px; }
+
+.vs-layout { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.vs-box { flex: 1; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; }
+
+.controls-hint { position: fixed; bottom: 20px; right: 20px; color: #475569; font-size: 14px; pointer-events: none; z-index: 10; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide-container active" style="background-image: url('https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover;">
+    <div class="content-area" style="align-items: center;">
+        <div class="full-bg-overlay">
+            <h1>Incentive <span>Alignment</span></h1>
+            <p class="subtitle">Designing Compensation to Drive Strategy</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: The Core Problem -->
+<div class="slide-container">
+    <h2 class="slide-title">The Agency Problem</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Principal vs. Agent</h3>
+                <p>In modern corporations, the owners (Shareholders) do not run the company. They hire managers (Agents) to do it.</p>
+                <br>
+                <ul>
+                    <li><strong>Shareholders</strong> want long-term value and dividends.</li>
+                    <li><strong>Managers</strong> might want big offices, private jets, or short-term bonuses.</li>
+                </ul>
+                <p style="margin-top: 20px; color: #34d399;"><strong>Goal:</strong> Align the interests of both parties.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Handshake">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Why Alignment Matters -->
+<div class="slide-container">
+    <h2 class="slide-title">Why Alignment Matters</h2>
+    <div class="content-area">
+        <p>A well-designed strategy is useless if the incentives encourage different behavior.</p>
+        <div class="card-grid" style="margin-top: 30px;">
+            <div class="card">
+                <h3>Direction</h3>
+                <p>Incentives signal to employees what is truly important to the company.</p>
+            </div>
+            <div class="card">
+                <h3>Motivation</h3>
+                <p>They provide the "fuel" for discretionary effort.</p>
+            </div>
+            <div class="card">
+                <h3>Retention</h3>
+                <p>They attract and keep high-performers while filtering out underperformers.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Motivation Theory -->
+<div class="slide-container">
+    <h2 class="slide-title">Motivation: Intrinsic vs. Extrinsic</h2>
+    <div class="content-area">
+        <div class="vs-layout">
+            <div class="vs-box">
+                <h3 style="color: #fbbf24;">Extrinsic (The Carrot)</h3>
+                <p>Driven by external rewards.</p>
+                <ul style="font-size: 16px; margin-top: 10px;">
+                    <li>Salaries</li>
+                    <li>Bonuses</li>
+                    <li>Promotions</li>
+                </ul>
+                <p style="font-size: 14px; margin-top: 15px;"><em>Good for mechanical tasks.</em></p>
+            </div>
+            <div class="vs-box">
+                <h3 style="color: #34d399;">Intrinsic (The Drive)</h3>
+                <p>Driven by internal satisfaction.</p>
+                <ul style="font-size: 16px; margin-top: 10px;">
+                    <li><strong>Autonomy:</strong> Desire to direct our own lives.</li>
+                    <li><strong>Mastery:</strong> Urge to get better.</li>
+                    <li><strong>Purpose:</strong> Serving something larger.</li>
+                </ul>
+                <p style="font-size: 14px; margin-top: 15px;"><em>Essential for creative/strategic work (Daniel Pink).</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5: Herzberg's Two-Factor Theory -->
+<div class="slide-container">
+    <h2 class="slide-title">Herzberg's Two-Factor Theory</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Balance scale">
+            </div>
+            <div>
+                <p>Compensation is often a "Hygiene Factor".</p>
+                <br>
+                <ul>
+                    <li><strong>Hygiene Factors:</strong> (Salary, Job Security). If missing, they cause dissatisfaction. But increasing them does NOT increase motivation indefinitely.</li>
+                    <li><strong>Motivators:</strong> (Recognition, Achievement). These actually drive higher performance.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Expectancy Theory (Vroom) -->
+<div class="slide-container">
+    <h2 class="slide-title">The Formula for Motivation</h2>
+    <div class="content-area" style="text-align: center;">
+        <h3>Expectancy Theory (Victor Vroom)</h3>
+        <p style="margin-bottom: 40px;">For an incentive to work, three things must be true:</p>
+        
+        <div style="display: flex; justify-content: center; gap: 20px; align-items: center;">
+            <div class="vs-box">
+                <h4 style="color:#fbbf24;">Expectancy</h4>
+                <p style="font-size:14px;">"If I try, can I do it?"</p>
+            </div>
+            <div style="font-size: 30px;">x</div>
+            <div class="vs-box">
+                <h4 style="color:#fbbf24;">Instrumentality</h4>
+                <p style="font-size:14px;">"If I do it, will I get the reward?"</p>
+            </div>
+            <div style="font-size: 30px;">x</div>
+            <div class="vs-box">
+                <h4 style="color:#fbbf24;">Valence</h4>
+                <p style="font-size:14px;">"Do I actually want the reward?"</p>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-style: italic;">If any of these is zero, Motivation is zero.</p>
+    </div>
+</div>
+
+<!-- Slide 7: Linking Strategy to Pay -->
+<div class="slide-container">
+    <h2 class="slide-title">Linking Strategy to Pay</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>The BSC Connection</h3>
+                <p>The Balanced Scorecard is the perfect tool to determine variable pay.</p>
+                <br>
+                <p>Instead of basing bonuses only on <strong>Profit</strong> (Financial), utilize a weighted average of the 4 perspectives.</p>
+                <p style="margin-top: 15px; color: #34d399;">Example Bonus Formula:</p>
+                <ul style="font-size: 16px;">
+                    <li>40% Financial Targets</li>
+                    <li>20% Customer Net Promoter Score</li>
+                    <li>20% Process Efficiency</li>
+                    <li>20% Employee Training</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Financial analysis">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: The Line of Sight Problem -->
+<div class="slide-container">
+    <h2 class="slide-title">The "Line of Sight" Problem</h2>
+    <div class="content-area">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p>An incentive only works if the employee feels they can influence the outcome.</p>
+            <br>
+            <div class="vs-layout" style="margin-top: 30px;">
+                <div class="vs-box">
+                    <h4>CEO / Executives</h4>
+                    <p>High Line of Sight to Stock Price & Global Profit.</p>
+                    <p style="color: #34d399;">Incentive: Stock Options</p>
+                </div>
+                <div class="vs-box">
+                    <h4>Factory Worker</h4>
+                    <p>Low Line of Sight to Stock Price.</p>
+                    <p>High Line of Sight to Daily Output & Quality.</p>
+                    <p style="color: #34d399;">Incentive: Shift Bonus</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: Time Horizon -->
+<div class="slide-container">
+    <h2 class="slide-title">Short-Term vs. Long-Term</h2>
+    <div class="content-area">
+        <p>Balancing today's bread with tomorrow's harvest.</p>
+        <div class="card-grid" style="margin-top: 30px;">
+            <div class="card">
+                <h3>Short-Term (STI)</h3>
+                <p><strong>< 1 Year</strong></p>
+                <p style="font-size:14px;">Annual Bonus, Sales Commissions.</p>
+                <p style="font-size:14px; color:#fbbf24;">Focus: Execution, Cash Flow.</p>
+            </div>
+            <div class="card">
+                <h3>Long-Term (LTI)</h3>
+                <p><strong>3-5 Years</strong></p>
+                <p style="font-size:14px;">Stock Options, Restricted Stock Units (RSUs).</p>
+                <p style="font-size:14px; color:#fbbf24;">Focus: Sustainability, Value Creation.</p>
+            </div>
+            <div class="card">
+                <h3>The Risk</h3>
+                <p>Too much STI encourages cutting corners (e.g., stopping R&D to boost quarterly profit).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Fixed vs. Variable Pay -->
+<div class="slide-container">
+    <h2 class="slide-title">The Compensation Mix</h2>
+    <div class="content-area">
+        <p>What percentage of pay should be "at risk"?</p>
+        <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px;">
+            
+            <div style="display: flex; align-items: center;">
+                <div style="width: 150px; font-weight: bold;">Sales Rep</div>
+                <div style="flex:1; display: flex; height: 30px; border-radius: 5px; overflow: hidden;">
+                    <div style="width: 40%; background: #334155; display: flex; align-items: center; justify-content: center; font-size: 12px;">Fixed (40%)</div>
+                    <div style="width: 60%; background: #34d399; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #000;">Variable (60%)</div>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center;">
+                <div style="width: 150px; font-weight: bold;">CEO</div>
+                <div style="flex:1; display: flex; height: 30px; border-radius: 5px; overflow: hidden;">
+                    <div style="width: 20%; background: #334155; display: flex; align-items: center; justify-content: center; font-size: 12px;">Fixed (20%)</div>
+                    <div style="width: 80%; background: #34d399; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #000;">Variable/Stock (80%)</div>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center;">
+                <div style="width: 150px; font-weight: bold;">Accountant</div>
+                <div style="flex:1; display: flex; height: 30px; border-radius: 5px; overflow: hidden;">
+                    <div style="width: 90%; background: #334155; display: flex; align-items: center; justify-content: center; font-size: 12px;">Fixed (90%)</div>
+                    <div style="width: 10%; background: #34d399; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #000;">Variable (10%)</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Slide 11: Individual vs. Team Incentives -->
+<div class="slide-container">
+    <h2 class="slide-title">Individual vs. Team Incentives</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Individual Pay</h3>
+                <p>Rewards personal effort. Good for sales ("eat what you kill").</p>
+                <p style="color: #f87171;">Risk: Can destroy teamwork and create silos.</p>
+                <br>
+                <h3>Team Pay</h3>
+                <p>Rewards collective success. Encourages collaboration.</p>
+                <p style="color: #f87171;">Risk: The "Free Rider" problem (lazy members get paid).</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Team high five">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Executive Compensation -->
+<div class="slide-container">
+    <h2 class="slide-title">Executive Compensation</h2>
+    <div class="content-area">
+        <p>A highly scrutinized area of corporate governance.</p>
+        <div class="card-grid" style="margin-top: 30px;">
+            <div class="card">
+                <h3>Stock Options</h3>
+                <p>Right to buy shares at a fixed price. Valuable only if stock goes UP.</p>
+            </div>
+            <div class="card">
+                <h3>Vesting Periods</h3>
+                <p>"Golden Handcuffs". You must stay 3-4 years to get the money.</p>
+            </div>
+            <div class="card">
+                <h3>Clawbacks</h3>
+                <p>The right to take money back if the executive committed fraud or ethical violations.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: Non-Monetary Incentives -->
+<div class="slide-container">
+    <h2 class="slide-title">It's Not Just About Money</h2>
+    <div class="content-area">
+        <p>Money is expensive. Praise is free.</p>
+        <div class="icon-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 40px; text-align: center;">
+            <div class="vs-box"><i class="fa-solid fa-trophy" style="color:#fbbf24; font-size:30px;"></i><p>Public Recognition</p></div>
+            <div class="vs-box"><i class="fa-solid fa-graduation-cap" style="color:#fbbf24; font-size:30px;"></i><p>Training & Growth</p></div>
+            <div class="vs-box"><i class="fa-solid fa-clock" style="color:#fbbf24; font-size:30px;"></i><p>Flexible Time</p></div>
+            <div class="vs-box"><i class="fa-solid fa-ladder-water" style="color:#fbbf24; font-size:30px;"></i><p>Career Pathing</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14: Metric Selection Risks -->
+<div class="slide-container">
+    <h2 class="slide-title">Selecting the Right Metrics</h2>
+    <div class="content-area">
+        <p>Be careful what you wish for. You will get it.</p>
+        <br>
+        <div class="two-column">
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                <strong style="color: #f87171;">Bad Metric:</strong>
+                <p>"Call Center Average Handling Time (AHT)"</p>
+                <p style="font-size: 14px; margin-top: 10px;"><em>Result:</em> Agents hang up on customers to keep calls short.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                <strong style="color: #34d399;">Better Metric:</strong>
+                <p>"First Call Resolution (FCR)"</p>
+                <p style="font-size: 14px; margin-top: 10px;"><em>Result:</em> Agents take time to solve the problem so the customer doesn't call back.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 15: Gaming the System -->
+<div class="slide-container">
+    <h2 class="slide-title">Gaming the System: The Cobra Effect</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1535581652167-3d6693c031ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Snake or Caution">
+            </div>
+            <div>
+                <h3>The Story</h3>
+                <p>British India offered a bounty for every dead cobra to reduce the snake population. Locals started breeding cobras to kill them and get paid. When the bounty stopped, they released the snakes.</p>
+                <br>
+                <p style="color: #fbbf24; font-style: italic;">"Perverse incentives create perverse outcomes."</p>
+                <p>Always play "Red Team" against your compensation plan. How would you cheat it?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 16: Transparency -->
+<div class="slide-container">
+    <h2 class="slide-title">Transparency & Communication</h2>
+    <div class="content-area">
+        <p>A compensation plan is a communication tool. If people don't understand it, it doesn't work.</p>
+        <div class="card-grid" style="margin-top: 30px;">
+            <div class="card">
+                <h3>Simplicity</h3>
+                <p>If an employee cannot calculate their own bonus on a napkin, the plan is too complex.</p>
+            </div>
+            <div class="card">
+                <h3>Frequency</h3>
+                <p>Provide feedback on progress towards the bonus monthly or quarterly, not just at year-end.</p>
+            </div>
+            <div class="card">
+                <h3>Realism</h3>
+                <p>Targets must be "Stretch but Achievable". Impossible targets demotivate (Expectancy Theory).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 17: Fairness & Equity -->
+<div class="slide-container">
+    <h2 class="slide-title">Fairness & Equity</h2>
+    <div class="content-area">
+        <p>Employees compare themselves to others (Equity Theory).</p>
+        <div class="vs-layout" style="margin-top: 40px;">
+            <div class="vs-box">
+                <h3>Internal Equity</h3>
+                <p>"Do I earn fair pay compared to my colleague Bob who does the same job?"</p>
+            </div>
+            <div class="vs-box">
+                <h3>External Equity</h3>
+                <p>"Do I earn fair pay compared to what I could get at Competitor X?"</p>
+            </div>
+        </div>
+        <p style="margin-top: 20px; text-align: center; color: #94a3b8;">Perceived unfairness leads to toxicity and turnover.</p>
+    </div>
+</div>
+
+<!-- Slide 18: The Dark Side (Examples) -->
+<div class="slide-container">
+    <h2 class="slide-title">When Incentives Go Wrong</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Wells Fargo (2016)</h3>
+                <p><strong>Incentive:</strong> Aggressive cross-selling targets (8 products per customer).</p>
+                <p><strong>Outcome:</strong> Employees opened 3.5 million fake accounts to hit targets.</p>
+                <br>
+                <h3>Enron (2001)</h3>
+                <p><strong>Incentive:</strong> Executives paid on stock price and revenue, not cash flow.</p>
+                <p><strong>Outcome:</strong> Massive accounting fraud to inflate perceived value.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1611974765270-ca12586343bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Falling stock chart">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 19: Total Rewards Framework -->
+<div class="slide-container">
+    <h2 class="slide-title">The "Total Rewards" Framework</h2>
+    <div class="content-area">
+        <p>Modern HR looks at the whole picture.</p>
+        <div style="display: flex; gap: 5px; margin-top: 40px; height: 100px;">
+            <div style="flex: 1; background: #064e3b; display: flex; align-items: center; justify-content: center; text-align: center;">Compensation<br>(Pay + Bonus)</div>
+            <div style="flex: 1; background: #065f46; display: flex; align-items: center; justify-content: center; text-align: center;">Benefits<br>(Health, Pension)</div>
+            <div style="flex: 1; background: #047857; display: flex; align-items: center; justify-content: center; text-align: center;">Work-Life<br>(Flexibility)</div>
+            <div style="flex: 1; background: #059669; display: flex; align-items: center; justify-content: center; text-align: center;">Performance<br>(Recognition)</div>
+            <div style="flex: 1; background: #10b981; display: flex; align-items: center; justify-content: center; text-align: center;">Development<br>(Career)</div>
+        </div>
+        <p style="text-align: center; margin-top: 20px;">To attract top talent, you need all five.</p>
+    </div>
+</div>
+
+<!-- Slide 20: Conclusion -->
+<div class="slide-container">
+    <div class="content-area full-bg-overlay" style="max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 50px; color: #fbbf24; margin-bottom: 20px;">Conclusion</h2>
+        <p>Compensation is not just an expense; it is a strategic lever.</p>
+        <p style="margin-top: 20px;">Align incentives with your Strategy, make them fair, keep them simple, and watch out for unintended consequences.</p>
+        <div style="margin-top: 40px; font-size: 60px; color: #fff;">
+            <i class="fa-solid fa-coins"></i>
+        </div>
+    </div>
+</div>
+
+<div class="controls-hint">Use Arrow Keys to Navigate</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.slide-container');
+        let currentSlide = 0;
+        function showSlide(index) {
+            if (index < 0) index = 0; if (index >= slides.length) index = slides.length - 1;
+            currentSlide = index;
+            slides.forEach((slide, i) => {
+                if (i === currentSlide) slide.classList.add('active');
+                else slide.classList.remove('active');
+            });
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') showSlide(currentSlide + 1);
+            else if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+        });
+        document.addEventListener('click', () => showSlide(currentSlide + 1));
+        showSlide(0);
+    });
+</script>
+
+</body>
+</html>
+```
