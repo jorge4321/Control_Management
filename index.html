@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material de Clase - Presentaciones</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .link-list {
+            list-style: none;
+            padding: 0;
+        }
+        .link-item {
+            margin-bottom: 15px;
+        }
+        .link-item a {
+            display: block;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .link-item a:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+        }
+        .status {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: #d1fae5;
+            color: #065f46;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📚 Presentaciones del Curso</h1>
+        
+        <ul class="link-list">
+            <!-- ENLACE 1 -->
+            <li class="link-item">
+                <!-- Asegúrate de que el 'href' coincida con el nombre de tu archivo subido -->
+                <a href="balanced_scorecard.html">
+                    <span>Tema 1: Balanced Scorecard</span>
+                    <span class="status">Disponible</span>
+                </a>
+            </li>
+
+            <!-- ENLACE 2 (Ejemplo futuro) -->
+            <li class="link-item">
+                <a href="#">
+                    <span>Tema 2: Estrategia Operativa</span>
+                    <span class="status" style="background:#f3f4f6; color:#9ca3af;">Próximamente</span>
+                </a>
+            </li>
+        </ul>
+        
+        <p style="text-align: center; color: #6b7280; margin-top: 30px; font-size: 0.9em;">
+            Universidad / Centro de Estudios - 2024
+        </p>
+    </div>
+
+</body>
+</html>
