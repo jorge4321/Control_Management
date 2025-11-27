@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Strategy - Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. THE SETUP */
+* { box-sizing: border-box; }
+body {
+  background-color: #000000;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Slide Container */
+.slide-container {
+  align-items: center;
+  background-color: #0f172a; /* Slate 900 */
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: none;
+  flex-direction: column;
+  height: 720px;
+  width: 1280px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px;
+  position: relative;
+  color: #f1f5f9;
+}
+.slide-container.active { display: flex; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+/* Background Design - Amber/Gold for Strategy */
+.slide-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: 
+    linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, transparent 40%), /* Amber */
+    linear-gradient(-45deg, rgba(217, 70, 239, 0.05) 60%, transparent 100%); /* Fuchsia hint */
+  z-index: 0; pointer-events: none;
+}
+
+/* Typography */
+h1, h2, h3 { font-family: 'Montserrat', sans-serif; color: #ffffff; margin: 0; line-height: 1.2; }
+h1 { font-size: 72px; font-weight: 800; text-transform: uppercase; letter-spacing: -1px; }
+.slide-title {
+  font-size: 42px; font-weight: 700; color: #fbbf24; /* Amber 400 */
+  margin-bottom: 30px; width: 100%; border-bottom: 2px solid #334155; padding-bottom: 15px;
+}
+p, li { font-size: 18px; line-height: 1.6; color: #cbd5e1; }
+.subtitle { font-size: 28px; font-weight: 300; color: #94a3b8; margin-top: 20px; }
+
+/* Layouts */
+.content-area { display: flex; flex-direction: column; flex-grow: 1; width: 100%; justify-content: center; position: relative; z-index: 1; }
+.two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; height: 100%; }
+.image-wrapper { width: 100%; height: 350px; border-radius: 12px; overflow: hidden; background: #1e293b; }
+.image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.full-bg-overlay { background-color: rgba(15, 23, 42, 0.85); padding: 40px; border-radius: 12px; text-align: center; }
+
+/* Components */
+.icon-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; text-align: center; }
+.icon-box { background: #1e293b; padding: 20px; border-radius: 10px; border: 1px solid #334155; }
+.icon-box i { font-size: 30px; color: #fbbf24; margin-bottom: 10px; }
+.icon-box h4 { margin: 0; color: #fff; font-size: 16px; }
+
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card { background: #1e293b; padding: 25px; border-radius: 12px; border-left: 4px solid #fbbf24; }
+.card h3 { font-size: 22px; color: #fbbf24; margin-bottom: 10px; }
+
+.vs-layout { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.vs-box { flex: 1; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; }
+
+.controls-hint { position: fixed; bottom: 20px; right: 20px; color: #475569; font-size: 14px; pointer-events: none; z-index: 10; }
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide-container active" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80'); background-size: cover;">
+    <div class="content-area" style="align-items: center;">
+        <div class="full-bg-overlay">
+            <h1>Business <span>Strategy</span></h1>
+            <p class="subtitle">The Art of Winning in Competitive Markets</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: Definition -->
+<div class="slide-container">
+    <h2 class="slide-title">What is Business Strategy?</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>Strategy is the direction and scope of an organization over the long term, which achieves advantage in a changing environment through its configuration of resources.</p>
+                <br>
+                <p><strong>Michael Porter defines it as:</strong></p>
+                <p style="font-style: italic; color: #fbbf24;">"Deliberately choosing a different set of activities to deliver a unique mix of value."</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1553484771-371af705b430?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Chess pieces strategy">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Vision, Mission, Values -->
+<div class="slide-container">
+    <h2 class="slide-title">The Foundation: Vision, Mission, Values</h2>
+    <div class="content-area">
+        <div class="card-grid">
+            <div class="card">
+                <h3>Vision</h3>
+                <p><strong>Where are we going?</strong><br>An aspirational future state. (e.g., "To accelerate the world's transition to sustainable energy").</p>
+            </div>
+            <div class="card">
+                <h3>Mission</h3>
+                <p><strong>Why do we exist?</strong><br>What the company does every day. (e.g., "To organize the world's information").</p>
+            </div>
+            <div class="card">
+                <h3>Values</h3>
+                <p><strong>How do we behave?</strong><br>The guiding principles and ethics (e.g., Integrity, Innovation).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Strategic Levels -->
+<div class="slide-container">
+    <h2 class="slide-title">Three Levels of Strategy</h2>
+    <div class="content-area">
+        <ul style="list-style: none; padding: 0;">
+            <li style="background: #1e293b; margin-bottom: 20px; padding: 20px; border-radius: 8px;">
+                <strong style="color: #fbbf24; font-size: 24px;">1. Corporate Strategy</strong><br>
+                Decisions about which industries to compete in (M&A, Diversification).
+            </li>
+            <li style="background: #1e293b; margin-bottom: 20px; padding: 20px; border-radius: 8px;">
+                <strong style="color: #fbbf24; font-size: 24px;">2. Business Strategy</strong><br>
+                How to compete within a specific industry or market (Cost vs Differentiation).
+            </li>
+            <li style="background: #1e293b; margin-bottom: 20px; padding: 20px; border-radius: 8px;">
+                <strong style="color: #fbbf24; font-size: 24px;">3. Functional Strategy</strong><br>
+                Operational approaches for departments (Marketing, HR, R&D).
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 5: PESTEL Analysis -->
+<div class="slide-container">
+    <h2 class="slide-title">External Analysis: PESTEL</h2>
+    <div class="content-area">
+        <p>Analyzing the Macro-Environment.</p>
+        <div class="icon-grid" style="grid-template-columns: repeat(6, 1fr); margin-top: 30px;">
+            <div class="icon-box"><h4>Political</h4><p style="font-size:12px">Govt policy, trade stability.</p></div>
+            <div class="icon-box"><h4>Economic</h4><p style="font-size:12px">Growth rates, inflation.</p></div>
+            <div class="icon-box"><h4>Social</h4><p style="font-size:12px">Demographics, lifestyle.</p></div>
+            <div class="icon-box"><h4>Tech</h4><p style="font-size:12px">Innovation, automation.</p></div>
+            <div class="icon-box"><h4>Environ</h4><p style="font-size:12px">Climate, sustainability.</p></div>
+            <div class="icon-box"><h4>Legal</h4><p style="font-size:12px">Labor laws, antitrust.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Porter's Five Forces -->
+<div class="slide-container">
+    <h2 class="slide-title">Industry Analysis: Porter's Five Forces</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>Determines the attractiveness and profitability of an industry.</p>
+                <ol>
+                    <li><strong>Threat of New Entrants:</strong> Barriers to entry.</li>
+                    <li><strong>Bargaining Power of Suppliers:</strong> Supplier concentration.</li>
+                    <li><strong>Bargaining Power of Buyers:</strong> Price sensitivity.</li>
+                    <li><strong>Threat of Substitutes:</strong> Alternative solutions.</li>
+                    <li><strong>Rivalry Among Competitors:</strong> Intensity of competition.</li>
+                </ol>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Meeting discussion">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Internal Analysis - RBV -->
+<div class="slide-container">
+    <h2 class="slide-title">Internal Analysis: Resource-Based View (RBV)</h2>
+    <div class="content-area">
+        <h3>VRIO Framework</h3>
+        <p>To provide a sustained competitive advantage, a resource must be:</p>
+        <div class="card-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 30px;">
+            <div class="card" style="border-color: #fbbf24;">
+                <h3>Valuable</h3>
+                <p style="font-size: 14px;">Does it exploit opportunities or neutralize threats?</p>
+            </div>
+            <div class="card" style="border-color: #fbbf24;">
+                <h3>Rare</h3>
+                <p style="font-size: 14px;">Is it controlled by only a few firms?</p>
+            </div>
+            <div class="card" style="border-color: #fbbf24;">
+                <h3>Inimitable</h3>
+                <p style="font-size: 14px;">Is it costly for others to copy?</p>
+            </div>
+            <div class="card" style="border-color: #fbbf24;">
+                <h3>Organized</h3>
+                <p style="font-size: 14px;">Is the firm ready to exploit it?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: SWOT Analysis -->
+<div class="slide-container">
+    <h2 class="slide-title">Putting it Together: SWOT</h2>
+    <div class="content-area">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 400px;">
+            <div style="background: rgba(74, 222, 128, 0.1); padding: 20px; border-radius: 8px;">
+                <h3 style="color: #4ade80;">Strengths (Internal)</h3>
+                <p>What do you do better than anyone else?</p>
+            </div>
+            <div style="background: rgba(248, 113, 113, 0.1); padding: 20px; border-radius: 8px;">
+                <h3 style="color: #f87171;">Weaknesses (Internal)</h3>
+                <p>What could you improve? What should you avoid?</p>
+            </div>
+            <div style="background: rgba(96, 165, 250, 0.1); padding: 20px; border-radius: 8px;">
+                <h3 style="color: #60a5fa;">Opportunities (External)</h3>
+                <p>What interesting trends are you aware of?</p>
+            </div>
+            <div style="background: rgba(251, 191, 36, 0.1); padding: 20px; border-radius: 8px;">
+                <h3 style="color: #fbbf24;">Threats (External)</h3>
+                <p>What obstacles do you face? What is your competition doing?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: Competitive Advantage -->
+<div class="slide-container">
+    <h2 class="slide-title">Competitive Advantage</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Winning race">
+            </div>
+            <div>
+                <p>Competitive Advantage occurs when a firm generates higher economic value than its competitors.</p>
+                <br>
+                <p>It usually comes from two sources:</p>
+                <ol>
+                    <li><strong>Cost Advantage:</strong> Producing similar products at lower cost.</li>
+                    <li><strong>Differentiation Advantage:</strong> Producing unique products that command a premium price.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Porter's Generic Strategies -->
+<div class="slide-container">
+    <h2 class="slide-title">Porter's Generic Strategies</h2>
+    <div class="content-area">
+        <table style="width: 100%; border-collapse: separate; border-spacing: 10px;">
+            <tr>
+                <th></th>
+                <th style="color: #fff; font-size: 24px;">Lower Cost</th>
+                <th style="color: #fff; font-size: 24px;">Differentiation</th>
+            </tr>
+            <tr>
+                <td style="color: #fbbf24; font-weight: bold; font-size: 24px; text-align: right; padding-right: 20px;">Broad Target</td>
+                <td style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center;">
+                    <strong style="font-size: 28px; color: #fbbf24;">Cost Leadership</strong><br>
+                    (Walmart, Amazon)
+                </td>
+                <td style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center;">
+                    <strong style="font-size: 28px; color: #fbbf24;">Differentiation</strong><br>
+                    (Apple, Mercedes)
+                </td>
+            </tr>
+            <tr>
+                <td style="color: #fbbf24; font-weight: bold; font-size: 24px; text-align: right; padding-right: 20px;">Narrow Target</td>
+                <td style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center;">
+                    <strong style="font-size: 28px; color: #fbbf24;">Cost Focus</strong><br>
+                    (Ryanair, Aldi)
+                </td>
+                <td style="background: #1e293b; padding: 30px; border-radius: 10px; text-align: center;">
+                    <strong style="font-size: 28px; color: #fbbf24;">Differentiation Focus</strong><br>
+                    (Ferrari, Whole Foods)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 11: Deep Dive - Cost Leadership -->
+<div class="slide-container">
+    <h2 class="slide-title">Strategy 1: Cost Leadership</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>How to achieve it?</h3>
+                <ul>
+                    <li>Economies of Scale.</li>
+                    <li>Proprietary Technology.</li>
+                    <li>Preferential access to raw materials.</li>
+                </ul>
+                <br>
+                <h3>The Risk</h3>
+                <p>Competitors may copy the technology, or customer preferences may shift towards quality over price.</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Warehouse logistics">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 12: Deep Dive - Differentiation -->
+<div class="slide-container">
+    <h2 class="slide-title">Strategy 2: Differentiation</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Luxury product">
+            </div>
+            <div>
+                <h3>How to achieve it?</h3>
+                <ul>
+                    <li>Superior Product Quality.</li>
+                    <li>Branding and Marketing.</li>
+                    <li>Superior Customer Service.</li>
+                </ul>
+                <br>
+                <h3>The Risk</h3>
+                <p>The "premium" price becomes too high for the value perceived by the customer.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 13: Deep Dive - Focus -->
+<div class="slide-container">
+    <h2 class="slide-title">Strategy 3: Focus (Niche)</h2>
+    <div class="content-area">
+        <h3>Serving a specific segment</h3>
+        <p>The focuser selects a segment or group of segments in the industry and tailors its strategy to serving them to the exclusion of others.</p>
+        <div class="vs-layout" style="margin-top: 40px;">
+            <div class="vs-box">
+                <h4>Advantages</h4>
+                <p>High customer loyalty, less competition, deep market knowledge.</p>
+            </div>
+            <div class="vs-box">
+                <h4>Disadvantages</h4>
+                <p>Limited growth potential, risk of the niche disappearing.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 14: The Value Chain -->
+<div class="slide-container">
+    <h2 class="slide-title">The Value Chain</h2>
+    <div class="content-area">
+        <p>Disaggregating a firm into its strategically relevant activities to understand costs and sources of differentiation.</p>
+        <div style="display: flex; gap: 10px; margin-top: 30px;">
+            <div style="flex: 1; background: #334155; padding: 15px; border-radius: 8px;">Inbound Logistics</div>
+            <div style="flex: 1; background: #334155; padding: 15px; border-radius: 8px;">Operations</div>
+            <div style="flex: 1; background: #334155; padding: 15px; border-radius: 8px;">Outbound Logistics</div>
+            <div style="flex: 1; background: #334155; padding: 15px; border-radius: 8px;">Marketing & Sales</div>
+            <div style="flex: 1; background: #334155; padding: 15px; border-radius: 8px;">Service</div>
+        </div>
+        <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #94a3b8;">Primary Activities supported by HR, Tech, and Procurement.</p>
+    </div>
+</div>
+
+<!-- Slide 15: Ansoff Matrix -->
+<div class="slide-container">
+    <h2 class="slide-title">Growth Strategy: Ansoff Matrix</h2>
+    <div class="content-area">
+        <table style="width: 100%; text-align: center; border-spacing: 15px; border-collapse: separate;">
+            <tr>
+                <td></td>
+                <th style="color: #94a3b8;">Existing Products</th>
+                <th style="color: #94a3b8;">New Products</th>
+            </tr>
+            <tr>
+                <th style="color: #94a3b8;">Existing Markets</th>
+                <td style="background: #1e293b; padding: 30px; border-radius: 12px; border: 2px solid #fbbf24;">
+                    <strong style="color: #fbbf24; font-size: 22px;">Market Penetration</strong><br>
+                    Sell more of same to same.
+                </td>
+                <td style="background: #1e293b; padding: 30px; border-radius: 12px;">
+                    <strong style="color: #fff; font-size: 22px;">Product Development</strong><br>
+                    New products for current users.
+                </td>
+            </tr>
+            <tr>
+                <th style="color: #94a3b8;">New Markets</th>
+                <td style="background: #1e293b; padding: 30px; border-radius: 12px;">
+                    <strong style="color: #fff; font-size: 22px;">Market Development</strong><br>
+                    New regions or segments.
+                </td>
+                <td style="background: #1e293b; padding: 30px; border-radius: 12px; border: 2px dashed #f87171;">
+                    <strong style="color: #f87171; font-size: 22px;">Diversification</strong><br>
+                    New products to new markets (High Risk).
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 16: Blue Ocean Strategy -->
+<div class="slide-container">
+    <h2 class="slide-title">Blue Ocean Strategy</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p>Stop competing. Create a new market space.</p>
+                <br>
+                <ul>
+                    <li><strong>Red Ocean:</strong> Compete in existing market space. Beat the competition. Exploit existing demand.</li>
+                    <li><strong>Blue Ocean:</strong> Create uncontested market space. Make the competition irrelevant. Create and capture new demand.</li>
+                </ul>
+                <p style="margin-top: 20px; color: #fbbf24;">Example: Cirque du Soleil</p>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1468276311530-9c585c223f4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Ocean horizon">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 17: Business Model Canvas -->
+<div class="slide-container">
+    <h2 class="slide-title">The Business Model Canvas</h2>
+    <div class="content-area">
+        <p>A strategic template for developing new or documenting existing business models.</p>
+        <div class="icon-grid" style="grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 30px;">
+            <div class="icon-box"><h4>Value Propositions</h4></div>
+            <div class="icon-box"><h4>Customer Segments</h4></div>
+            <div class="icon-box"><h4>Channels</h4></div>
+            <div class="icon-box"><h4>Customer Relations</h4></div>
+            <div class="icon-box"><h4>Revenue Streams</h4></div>
+            <div class="icon-box"><h4>Key Resources</h4></div>
+            <div class="icon-box"><h4>Key Activities</h4></div>
+            <div class="icon-box"><h4>Key Partnerships</h4></div>
+            <div class="icon-box"><h4>Cost Structure</h4></div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 18: Strategic Implementation -->
+<div class="slide-container">
+    <h2 class="slide-title">Execution: Where Strategies Fail</h2>
+    <div class="content-area">
+        <p style="text-align: center; font-size: 24px;">"Strategy without tactics is the slowest route to victory. Tactics without strategy is the noise before defeat." — Sun Tzu</p>
+        <br>
+        <div class="card-grid">
+            <div class="card">
+                <h3>People</h3>
+                <p>Do we have the right talent and leadership?</p>
+            </div>
+            <div class="card">
+                <h3>Structure</h3>
+                <p>Does the org chart support the strategy?</p>
+            </div>
+            <div class="card">
+                <h3>Culture</h3>
+                <p>Does the culture eat strategy for breakfast?</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 19: Measuring Success -->
+<div class="slide-container">
+    <h2 class="slide-title">Measuring Strategic Success</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Data dashboard">
+            </div>
+            <div>
+                <h3>Key Metrics</h3>
+                <ul>
+                    <li><strong>Financial:</strong> ROI, ROE, EBITDA Margin.</li>
+                    <li><strong>Market:</strong> Market Share, Growth Rate.</li>
+                    <li><strong>Balanced Scorecard:</strong> Using the 4 perspectives (Financial, Customer, Process, Learning) to track implementation.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 20: Conclusion -->
+<div class="slide-container">
+    <div class="content-area full-bg-overlay" style="max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 50px; color: #fbbf24; margin-bottom: 20px;">Conclusion</h2>
+        <p>Business Strategy is not a one-time event. It is a continuous cycle of analysis, formulation, and execution to stay ahead in a changing world.</p>
+        <div style="margin-top: 40px; font-size: 60px; color: #fff;">
+            <i class="fa-solid fa-chess-king"></i>
+        </div>
+    </div>
+</div>
+
+<div class="controls-hint">Use Arrow Keys to Navigate</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.slide-container');
+        let currentSlide = 0;
+        function showSlide(index) {
+            if (index < 0) index = 0; if (index >= slides.length) index = slides.length - 1;
+            currentSlide = index;
+            slides.forEach((slide, i) => {
+                if (i === currentSlide) slide.classList.add('active');
+                else slide.classList.remove('active');
+            });
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') showSlide(currentSlide + 1);
+            else if (e.key === 'ArrowLeft') showSlide(currentSlide - 1);
+        });
+        document.addEventListener('click', () => showSlide(currentSlide + 1));
+        showSlide(0);
+    });
+</script>
+
+</body>
+</html>
